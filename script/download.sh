@@ -17,3 +17,4 @@ wget https://github.com/opencv/opencv/raw/master/samples/data/left14.jpg
 mv left*.jpg input
 
 wget https://github.com/opencv/opencv/raw/master/samples/data/left_intrinsics.yml
+mv left_intrinsics.yml config
