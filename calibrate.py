@@ -6,16 +6,16 @@ import cv2
 import numpy as np
 import pickle
 
-from utils.common import splitfn
-
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--size", default=1.0, type=int, help="size of the chessboard square in meter")
+parser.add_argument("--size", default=1.0, type=float, help="size of the chessboard square in meter")
 parser.add_argument("--input", default="input/", help="input directory")
 parser.add_argument("--output", default="output/camera.pkl", help="output file")
 
 # Chessboard setting
 PATTERN_SIZE = (9, 6)
+CAMERA_WIDTH = 1920
+CAMERA_HEIGHT = 1080
 
 def main(args):
     # Read imgs of chessboard from input directory
@@ -56,15 +56,12 @@ def main(args):
     # ============================================
     rms, camera_matrix, dist_coefs, rvecs, tvecs = cv2.calibrateCamera(obj_points, img_points, (w, h), None, None)
 
-3x1
-3x1
-
     chessboard = {
             'size': args['size'],
             'pattern': PATTERN_SIZE }
     intrinsic = {
-            'width': 1280,
-            'height':720,
+            'width': CAMERA_WIDTH,
+            'height': CAMERA_HEIGHT,
             'matrix': camera_matrix,
             'dist_coefs': dist_coefs }
     extrinsics = {}
