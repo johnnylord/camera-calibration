@@ -1,8 +1,4 @@
-!**/.gitkeep
-
-*.yml
-*.jpg
-*.png
-*.pkl
-*.mp4
-*.avi
+input/
+output/
+config/
+.ipynb_checkpoints/

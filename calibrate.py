@@ -19,7 +19,7 @@ CAMERA_HEIGHT = 1080
 
 def main(args):
     # Read imgs of chessboard from input directory
-    img_files = [ osp.join(args['input'], f) for f in os.listdir(args['input']) ]
+    img_files = [ osp.join(args['input'], f) for f in os.listdir(args['input']) if 'jpg' in f ]
 
     # Prepare world coordinate information of chessboard (planar model)
     # =================================================================
@@ -39,6 +39,7 @@ def main(args):
 
         found, corners = cv2.findChessboardCorners(img, PATTERN_SIZE)
         if found:
+            print("Found chessboard in '{}'".format(f))
             # Refine the precision of corners
             term = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_COUNT, 30, 0.1)
             cv2.cornerSubPix(img, corners, (5, 5), (-1, -1), term)
